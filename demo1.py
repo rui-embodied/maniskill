@@ -5,7 +5,7 @@ import threading
 import time
 import numpy as np
 from sim.tasks.env import TestEnv
-from sim.tasks.test import StairEnv
+from sim.tasks.stair import StairEnv
 from sim.tasks.taskA import TaskAEnv
 import select
 import sys

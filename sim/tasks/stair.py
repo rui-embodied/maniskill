@@ -39,15 +39,6 @@ class StairEnv(BaseEnv):
             self, *args, robot_uids=None, robot_init_qpos_noise=0.02, **kwargs
             # self, *args, robot_uids=("aliengoZ1", "apollo", "panda", "drone"), robot_init_qpos_noise=0.02, **kwargs
     ):
-        with open(kwargs['config'], 'r', encoding='utf-8') as f:
-            cfg = yaml.load(f.read(), Loader=yaml.FullLoader)
-            del kwargs['config']
-        self.cfg = nested_yaml_map(replace_dir, cfg)
-        
-        # 根据配置文件中的agents动态设置robot_uids
-        if robot_uids is None:
-            robot_uids = tuple(agent_cfg['robot_type'] for agent_cfg in self.cfg['agents'])
-        
         super().__init__(*args, robot_uids=robot_uids, **kwargs)
     
     # @property
@@ -82,11 +73,9 @@ class StairEnv(BaseEnv):
     #     return all_camera_configs
 
     def _load_agent(self, options: dict):
-        cfg = copy.deepcopy(self.cfg)
         init_poses = []
-        for agent_cfg in cfg['agents']:
             # print(agent_cfg)
-            init_poses.append(sapien.Pose(p=agent_cfg['pos']['ppos']['p']))
+        init_poses.append(sapien.Pose(p=[0 ,0 ,1]))
         super()._load_agent(options, init_poses)
 
     def _load_scene(self, options: dict):

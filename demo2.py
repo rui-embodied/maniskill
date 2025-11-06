@@ -18,10 +18,7 @@ def parse_args(args=None):
 def run_env(args):
     # 加载配置
     env_id = "stair"
-    with open(args.config, "r") as f:
-        config = yaml.safe_load(f)
-    robot_uids = [agent_cfg['robot_type'] for agent_cfg in config['agents']]
-    robot_uids = tuple(robot_uids)
+    robot_uids = "b2z1"
     env = gym.make(
         id=env_id,  
         robot_uids=robot_uids,
