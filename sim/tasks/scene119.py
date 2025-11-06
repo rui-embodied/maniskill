@@ -37,8 +37,15 @@ from mani_skill.sensors.depth_camera import StereoDepthCamera, StereoDepthCamera
 class Scene119Env(BaseEnv):
     def __init__(
             self, *args, robot_uids=None, robot_init_qpos_noise=0.02, **kwargs
-            # self, *args, robot_uids=("aliengoZ1", "apollo", "panda", "drone"), robot_init_qpos_noise=0.02, **kwargs
     ):
+        with open(kwargs['config'], 'r', encoding='utf-8') as f:
+            cfg = yaml.load(f.read(), Loader=yaml.FullLoader)
+            del kwargs['config']
+        self.cfg = nested_yaml_map(replace_dir, cfg)
+
+        if robot_uids is None:
+            robot_uids = tuple(agent_cfg['robot_type'] for agent_cfg in self.cfg['agent'])
+
         super().__init__(*args, robot_uids=robot_uids, **kwargs)
     
     # @property
@@ -73,8 +80,10 @@ class Scene119Env(BaseEnv):
     #     return all_camera_configs
 
     def _load_agent(self, options: dict):
+        cfg = copy.deepcopy(self.cfg)
         init_poses = []
-        init_poses.append(sapien.Pose(p=[20., 20., 0.]))
+        for agent_cfg in cfg['agents']:
+            init_poses.append(sapien.Pose(p=agent_cfg['pos']['ppos']['p']))
         super()._load_agent(options, init_poses)
 
     def _load_scene(self, options: dict):

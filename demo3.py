@@ -12,15 +12,20 @@ from sim import CONFIG_DIR
 
 def parse_args(args=None):
     parser = argparse.ArgumentParser()
-    parser.add_argument("-c", "--config", type=str, default=f"{CONFIG_DIR}/test_env.yaml", help='Configuration to build scenes, assets and agents.')
+    parser.add_argument("-c", "--config", type=str, default=f"{CONFIG_DIR}/scene119.yaml", help='Configuration to build scenes, assets and agents.')
     return parser.parse_args()
 
 def run_env(args):
     # 加载配置
-    env_id = "scene119"
-    robot_uids = ("b2z1")
+    with open(args.config, "r") as f:
+        config = yaml.safe_load(f)
+        env_id = config['task_name']
+    robot_uids = [agent_cfg['robot_type'] for agent_cfg in config['agents']]
+    robot_uids = tuple(robot_uids)
+
     env = gym.make(
         id=env_id,  
+        config=args.config,
         robot_uids=robot_uids,
         obs_mode="rgbd",
         control_mode="pd_joint_pos",
@@ -29,9 +34,13 @@ def run_env(args):
     )
     obs = env.reset()
 
+    zero_action = {}
+    for agent_id, space in env.action_space.spaces.items():
+        zero_action[agent_id] = np.zeros(space.shape, dtype=space.dtype)
+
+    zero_action['b2z1'] = np.array([0, 0])
     while True:
-        action = env.action_space.sample() if env.action_space is not None else None
-        action = np.zeros_like(action)   # 停止运动
+        action = zero_action
         obs, reward, terminated, truncated, info = env.step(action)
         env.render()
 
