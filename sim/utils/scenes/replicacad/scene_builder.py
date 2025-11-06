@@ -116,7 +116,7 @@ class ReplicaCADSceneBuilder(SceneBuilder):
                 build_config_json["stage_instance"]["template_name"]
             )
             bg_path = str(
-                "sim/assets/scene15.glb"
+                "sim/assets/stair.glb"
             )
             builder = self.scene.create_actor_builder()
             # Note all ReplicaCAD assets are rotated by 90 degrees as they use a different xyz convention to SAPIEN/ManiSkill.

@@ -20,3 +20,5 @@ class B2z1(BaseAgent):
             pose=sapien.Pose(p=[0, 0, 1.1])
         )
     )
+
+    
