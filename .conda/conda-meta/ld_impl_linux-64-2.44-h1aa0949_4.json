@@ -1,0 +1,53 @@
+{
+  "name": "ld_impl_linux-64",
+  "version": "2.44",
+  "build": "h1aa0949_4",
+  "build_number": 4,
+  "channel": "https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/noarch",
+  "subdir": "linux-64",
+  "fn": "ld_impl_linux-64-2.44-h1aa0949_4.conda",
+  "md5": "c94ab6ff54ba5172cf1c58267005670f",
+  "url": "https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/linux-64/ld_impl_linux-64-2.44-h1aa0949_4.conda",
+  "sha256": "96b6900ca0489d9e5d0318a6b49f8eff43fd85fef6e07cb0c25344ee94cd7a3a",
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "zstd >=1.5.7,<1.6.0a0"
+  ],
+  "constrains": [
+    "binutils_impl_linux-64 2.44"
+  ],
+  "license": "GPL-3.0-only",
+  "timestamp": 1761335175000,
+  "size": 742501,
+  "requested_spec": "None",
+  "package_tarball_full_path": "/home/sutai/miniconda3/pkgs/ld_impl_linux-64-2.44-h1aa0949_4.conda",
+  "extracted_package_dir": "/home/sutai/miniconda3/pkgs/ld_impl_linux-64-2.44-h1aa0949_4",
+  "files": [
+    "bin/x86_64-conda-linux-gnu-ld",
+    "x86_64-conda-linux-gnu/bin/ld"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "bin/x86_64-conda-linux-gnu-ld",
+        "prefix_placeholder": "/home/conda/feedstock_root/build_artifacts/binutils_split_1761334581390/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "sha256": "65d57cd270b3cce21d4f134d6372514982095a1c0800de4f03b365fed74fadb4",
+        "size_in_bytes": 2940688,
+        "sha256_in_prefix": "3ac862e840649dbc25cd5f92cd7e998c5323608feb72fb0693cb1f3d158c5b69"
+      },
+      {
+        "_path": "x86_64-conda-linux-gnu/bin/ld",
+        "path_type": "softlink",
+        "sha256": "65d57cd270b3cce21d4f134d6372514982095a1c0800de4f03b365fed74fadb4",
+        "size_in_bytes": 2940688
+      }
+    ]
+  },
+  "link": {
+    "source": "/home/sutai/miniconda3/pkgs/ld_impl_linux-64-2.44-h1aa0949_4",
+    "type": 1
+  }
+}

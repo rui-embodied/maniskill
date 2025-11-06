@@ -1,0 +1,11 @@
+prefix=/home/sutai/rui/maniskill/.conda
+exec_prefix=/home/sutai/rui/maniskill/.conda
+libdir=/home/sutai/rui/maniskill/.conda/lib
+includedir=/home/sutai/rui/maniskill/.conda/include
+
+Name: uuid
+Description: Universally unique id library
+Version: 2.41.2
+Cflags: -I${includedir}/uuid
+Libs.private:  -lpthread
+Libs: -L${libdir} -luuid

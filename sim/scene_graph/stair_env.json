@@ -1,0 +1,75 @@
+[
+    {
+        "task_id": 0,
+        "task_name": "Stair",
+        "env_id": 0,
+        "init_graph": {
+            "nodes": [
+                {
+                    "id": 0,
+                    "category": "Rooms",
+                    "class_name": "scene_background",
+                    "prefab_name": "scene_background",
+                    "properties": [],
+                    "states": []
+                },
+                {
+                    "id": 1,
+                    "category": "Furniture",
+                    "class_name": "kitchen counter",
+                    "prefab_name": "kitchen_counter_0",
+                    "properties": [
+                        "OPENABLE"
+                    ],
+                    "states": ["CLOSED"]
+                },
+                {
+                    "id": 2,
+                    "category": "Staff",
+                    "class_name": "bowl",
+                    "prefab_name": "apartment_bowl_06",
+                    "properties": [
+                        "GRABABLE",
+                        "MOVABLE"
+                    ],
+                    "states": [
+                        
+                    ]
+                },
+                {
+                    "id": 3,
+                    "category": "Staff",
+                    "class_name": "appliance",
+                    "prefab_name": "small_aplliance_01",
+                    "properties": [
+                    ],
+                    "states": [
+                    ]
+                }
+            ],
+            "edges": [
+                {
+                    "from_id": 0,
+                    "to_id": 1,
+                    "relation_type": "ON"
+                },
+                {
+                    "from_id": 1,
+                    "to_id": 2,
+                    "relation_type": "ON"
+                },
+                {
+                    "from_id": 1,
+                    "to_id": 3,
+                    "relation_type": "ON"
+                }
+            ]
+        },
+        "task_goal": {
+            "a": [1, []],
+            "b": [1, []]
+        },
+        "goal_instruction": [],
+        "ground_truth_step_num": [1]
+    }
+]

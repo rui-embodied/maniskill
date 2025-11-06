@@ -1,0 +1,171 @@
+<?xml version="1.0" ?>
+
+<robot name="cf2">
+
+  <properties arm="0.0397" kf="3.16e-10" km="7.94e-12" thrust2weight="2.25" max_speed_kmh="30" gnd_eff_coeff="11.36859" prop_radius="2.31348e-2" drag_coeff_xy="9.1785e-7" drag_coeff_z="10.311e-7" dw_coeff_1="2267.18" dw_coeff_2=".16" dw_coeff_3="-.11" />
+
+  <link name="base_link"> 
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.0"/>
+      <inertia ixx="1.4e-5" ixy="0.0" ixz="0.0" iyy="1.4e-5" iyz="0.0" izz="2.17e-5"/>
+    </inertial>
+
+    <!-- links>
+      <carlos url="https://arxiv.org/pdf/1608.05786.pdf" />
+      <julian url="https://www.research-collection.ethz.ch/handle/20.500.11850/214143" />
+      <mit url="http://groups.csail.mit.edu/robotics-center/public_papers/Landry15.pdf" />
+    </links -->
+
+    <visual>
+      <origin rpy="0 0 55" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="./cf2.dae" scale=" 3 3 3"/>
+      </geometry> 
+      <material name="grey">
+        <color rgba=".5 .5 .5 1"/>
+      </material> 
+    </visual>
+
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder radius=".06" length=".025"/>
+      </geometry>
+    </collision>  
+
+  </link>
+
+  <link name="prop0_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.028 -0.028 0"/>
+      <mass value="0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+  <joint name="prop0_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="prop0_link"/>
+  </joint>
+
+  <link name="prop1_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.028 -0.028 0"/>
+      <mass value="0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+  <joint name="prop1_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="prop1_link"/>
+  </joint>
+
+  <link name="prop2_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.028 0.028 0"/>
+      <mass value="0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+  <joint name="prop2_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="prop2_link"/>
+  </joint>
+
+  <link name="prop3_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.028 0.028 0"/>
+      <mass value="0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+  <joint name="prop3_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="prop3_link"/>
+  </joint>
+
+  <link name="center_of_mass_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+  <joint name="center_of_mass_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="center_of_mass_link"/>
+  </joint>
+
+  <joint name="suck_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="headLink"/>
+    <origin rpy="3.1415926 0 0" xyz="0 0 -0.012"/>
+  </joint>
+
+  <link name="headLink">
+    <collision name="headLink_collision">
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000" />
+      <geometry>
+        <mesh filename="./end_effector/vacuum_gripper/long_vacuum_gripper/meshes/head.stl" scale="0.00150 0.00150 0.00150" />
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.25000" ixy="0.00000" ixz="0.00000" iyy="0.25000" iyz="0.00000" izz="0.25000" />
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000" />
+      <mass value="0.02500" />
+    </inertial>
+    <visual name="headLink_visual">
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="0.00051 -0.00049 -0.01732" />
+      <material name="darkgrey" />
+      <geometry>
+        <mesh filename="./end_effector/vacuum_gripper/long_vacuum_gripper/meshes/head.stl" scale="0.00150 0.00150 0.00150" />
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="tipJoint" type="fixed">
+    <origin rpy="-0.00000 0.00000 -0.00000" xyz="0.00000 -0.00000 0.01450" />
+    <parent link="headLink" />
+    <child link="tipLink" />
+  </joint>
+
+  <link name="tipLink">
+    <collision name="tipLink_collision">
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000" />
+      <geometry>
+        <cylinder radius="0.00050" length="0.01400" />
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.50000" ixy="-0.00000" ixz="0.00000" iyy="0.50000" iyz="0.00000" izz="0.50000" />
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 -0.00000" />
+      <mass value="0.05000" />
+    </inertial>
+    <visual name="tipLink_visual">
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="0.00051 -0.00049 -0.01732" />
+      <material name="LightGrey" />
+      <geometry>
+        <mesh filename="./end_effector/vacuum_gripper/long_vacuum_gripper/meshes/tip.stl" scale="0.00150 0.00150 0.00150" />
+      </geometry>
+    </visual>
+  </link>
+
+
+  <joint name="tool_center_point" type="fixed">
+    <origin rpy="0.00000 0.00000 -0.00000" xyz="0.00000 0.00000 -0.00000" />
+    <parent link="tipLink" />
+    <child link="link_tcp" />
+  </joint>
+
+  <link name="link_tcp" />
+
+  <link name="camera_pos">
+  </link>
+  <joint name="camera_arm" type="fixed">
+    <origin rpy="0 0 0" xyz="-3 0 1.8"/>
+    <parent link="base_link"/>
+    <child link="camera_pos"/>
+  </joint>
+</robot>
+

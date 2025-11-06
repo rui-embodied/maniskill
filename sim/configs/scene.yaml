@@ -1,0 +1,193 @@
+task_name: TestEnv-v1
+scene:
+  stage:
+    name: stage_chejian
+    file_path: ${ASSET_DIR}/cell_1.glb
+    transform:
+      position: [-14.0, -10.0, 0.0]
+      rotation: [0.0, 0.0, 0.0]
+
+actors:
+
+  -
+    name: person
+    render_file_path: ${ASSET_DIR}/walking.dae
+    use_visual_as_bounding_box: false
+    collision_file_path: ${ASSET_DIR}/walking.dae
+    body_type: static
+    transform:
+      position: [9.239, -16.318, 0.56]
+      rotation: [-90.0, 0.0, 0.0]
+
+  -
+    name: actor_test_stuff
+    render_file_path: ${ASSET_DIR}/table.glb
+    use_visual_as_bounding_box: false
+    collision_file_path: ${ASSET_DIR}/table.glb
+    body_type: static
+    transform:
+      position: [0.0, 0.0, 0.0]
+      rotation: [0.0, 0.0, 0.0]
+
+  -
+    name: area_a
+    render_file_path: ${ASSET_DIR}/OldWarehouse.glb
+    use_visual_as_bounding_box: false
+    body_type: static
+    transform:
+      position: [20.0, -10.0, 6.542]
+      rotation: [-90.0, 0.0, 182.63572]
+
+  -
+    name: flame_1_1
+    render_file_path: ${ASSET_DIR}/flames/flame_pixel_01.obj
+    use_visual_as_bounding_box: true
+    body_type: static
+    transform:
+      position: [12.239, -16.318, 0.08]
+      rotation: [90.0, 0.0, 0.0]
+
+  -
+    name: flame_1_2
+    render_file_path: ${ASSET_DIR}/flames/flame_pixel_02.obj
+    use_visual_as_bounding_box: true
+    body_type: static
+    transform:
+      position: [11.239, -16.318, 0.0]
+      rotation: [90.0, 0.0, 74.5]
+
+  -
+    name: flame_1_3
+    render_file_path: ${ASSET_DIR}/flames/flame_pixel_01.obj
+    use_visual_as_bounding_box: true
+    body_type: static
+    transform:
+      position: [13.489, -16.318, 0.0]
+      rotation: [90.0, 0.0, -5.8]
+
+  -
+    name: flame_1_4
+    render_file_path: ${ASSET_DIR}/flames/flame_pixel_01.obj
+    use_visual_as_bounding_box: true
+    body_type: static
+    transform:
+      position: [13.979, -17.228, 0.0]
+      rotation: [90.0, 0.0, -116.25]
+
+
+  -
+    name: flame_2_1
+    render_file_path: ${ASSET_DIR}/flames/flame_pixel_02.obj
+    use_visual_as_bounding_box: true
+    body_type: static
+    transform:
+      position: [12.459, -17.358, 0.0]
+      rotation: [90.0, 0.0, -137.0]
+
+  -
+    name: flame_2_2
+    render_file_path: ${ASSET_DIR}/flames/flame_pixel_01.obj
+    use_visual_as_bounding_box: true
+    body_type: static
+    transform:
+      position: [11.309, -17.568, 0.0]
+      rotation: [90.0, 0.0, 150.7]
+
+  -
+    name: flame_2_3
+    render_file_path: ${ASSET_DIR}/flames/flame_pixel_02.obj
+    use_visual_as_bounding_box: true
+    body_type: static
+    transform:
+      position: [13.329, -17.718, 0.0]
+      rotation: [90.0, 0.0, -56.0]
+
+articulations:
+  -
+    name: door
+    urdf_path: ${ASSET_DIR}/unnamed/urdf/unnamed.urdf
+    fixed_base: true
+    uniform_scale: 1.0
+    transform:
+      position: [3.76922, -11.934913, 0.211713]
+      rotation: [0.0, 0.0, 0.0]
+
+agents:
+
+  -
+    robot_type: aliengoZ1
+    robot_uid: robot_dog
+    pos:
+      ppos:
+        p: [-2.201, 13.370, 0.697]
+        q: [0., 0., 1.5707963268]
+      qpos: [0., 0.3926990817, 0., -1.9634954085, 0., 2.3561944902, 0.7853981634, 0.04, 0.04]
+      randp_scale: [0., 0., 0.]
+      randq_scale: [0., 0., 0., 0., 0., 0., 0., 0., 0.]
+  -
+    robot_type: apollo
+    robot_uid: robotic_vehicle
+    pos:
+      ppos:
+        p: [18.061, 12.268, 0.1]
+        q: [0., 0., 0.]
+        # -1.5707963268
+      qpos: [0., 0.3926990817, 0., -1.9634954085, 0., 2.3561944902, 0.7853981634, 0.04, 0.04]
+      randp_scale: [0., 0., 0.]
+      randq_scale: [0., 0., 0., 0., 0., 0., 0., 0., 0.]
+
+cameras:
+  sensor:
+    # - 
+    #   uid: head_camera_agent0
+    #   pose:
+    #     type: look_at
+    #     params: [[-0.5, 0, 0.4], [0, 0, 0.1]]
+    #   width: 320
+    #   height: 240
+    #   fov: 1.5707963268
+    #   near: 0.1
+    #   far: 10
+    # - 
+    #   uid: head_camera_agent1
+    #   pose:
+    #     type: look_at
+    #     params: [[-0.5, 0, 0.4], [0, 0, 0.1]]
+    #   width: 320
+    #   height: 240
+    #   fov: 1.5707963268
+    #   near: 0.1
+    #   far: 10
+    # - 
+    #   uid: head_camera_agent2
+    #   pose:
+    #     type: look_at
+    #     params: [[0.165, -0.5, 0.4], [0.485, 0, 0.1]]
+    #   width: 320
+    #   height: 240
+    #   fov: 1.5707963268
+    #   near: 0.1
+    #   far: 10
+    - 
+      uid: head_camera_global
+      pose:
+        type: pose
+        params: [[0.418364, 0.465167, 0.492697], [0.435656, 0.249818, 0.127239, -0.855339]]
+      width: 320
+      height: 240
+      fov: 1.5707963268
+      near: 0.1
+      far: 10
+  human_render:
+    - 
+      uid: render_camera
+      pose:
+        type: pose
+        params: [[0.868396, 1.09695, 0.703708], [0.454605, 0.234498, 0.125406, -0.85007]]
+      width: 512
+      height: 512
+      fov: 1
+      near: 0.01
+      far: 100
+
+task_path: hw/cmd/rescue.json
