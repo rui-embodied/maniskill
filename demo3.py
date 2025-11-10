@@ -38,8 +38,20 @@ def run_env(args):
     for agent_id, space in env.action_space.spaces.items():
         zero_action[agent_id] = np.zeros(space.shape, dtype=space.dtype)
 
-    zero_action['b2z1'] = np.array([0, 0])
+    viewer = env.unwrapped.viewer
     while True:
+        if viewer.window.key_down("k"):
+            zero_action['tracer_mini-0'][0] = 0.5
+        elif viewer.window.key_down("i"):
+            zero_action['tracer_mini-0'][0] = -0.5
+        else:
+            zero_action['tracer_mini-0'][0] = 0
+        if viewer.window.key_down("l"):
+            zero_action['tracer_mini-0'][1] = -0.2
+        elif viewer.window.key_down("j"):
+            zero_action['tracer_mini-0'][1] = 0.2
+        else:
+            zero_action['tracer_mini-0'][1] = 0
         action = zero_action
         obs, reward, terminated, truncated, info = env.step(action)
         env.render()

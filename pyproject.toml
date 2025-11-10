@@ -95,6 +95,7 @@ reportAttributeAccessIssue = "none"
 reportUndefinedVariable = "none"
 reportCallIssue = "none"
 reportReturnType = "none"
+reportPrivateUsage = "none"
 
 
 [tool.codespell]

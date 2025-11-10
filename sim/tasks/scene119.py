@@ -21,7 +21,7 @@ from sim.robots.apollo import Apollo
 from sim.robots.drone import Drone
 from sim.robots.aliengoZ1 import AliengoZ1
 from sim.robots.b2z1 import B2z1
-from sim.robots.R1_Lite import StarSeaMap
+from sim.robots.R1_Lite import Galaxea
 from sim.robots.tracer_mini import Tracer_mini
 from sim.utils.scenes.scene119.scene_builder import ReplicaCADSceneBuilder
 from mani_skill.sensors.camera import (
