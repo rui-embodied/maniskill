@@ -16,6 +16,7 @@ from mani_skill.utils.sapien_utils import look_at
 from mani_skill.agents.multi_agent import MultiAgent
 import sim.utils.scenes as scenes
 from sim import CONFIG_DIR
+from sim import ASSET_DIR
 from sim.utils.nested_dict_utils import nested_yaml_map, replace_dir
 from sim.robots.apollo import Apollo
 from sim.robots.drone import Drone
@@ -24,6 +25,7 @@ from sim.robots.b2z1 import B2z1
 from sim.robots.R1_Lite import StarSeaMap
 from sim.robots.tracer_mini import Tracer_mini
 from sim.utils.scenes.replicacad.scene_builder import ReplicaCADSceneBuilder
+from sim.utils.scenes.table import TableSceneBuilder
 from mani_skill.sensors.camera import (
     Camera,
     CameraConfig,
@@ -39,6 +41,7 @@ class StairEnv(BaseEnv):
             self, *args, robot_uids=None, robot_init_qpos_noise=0.02, **kwargs
             # self, *args, robot_uids=("aliengoZ1", "apollo", "panda", "drone"), robot_init_qpos_noise=0.02, **kwargs
     ):
+        self.robot_init_qpos_noise = robot_init_qpos_noise
         super().__init__(*args, robot_uids=robot_uids, **kwargs)
     
     # @property

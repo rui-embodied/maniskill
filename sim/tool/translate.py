@@ -32,18 +32,33 @@ import numpy as np
 
 def quat_inverse(q_out):
     """逆变换函数: 将 ManiSkill 输出的四元数转换回原始坐标"""
-    w, x, y, z = q_out
-    return np.array([x, w, y, z])
+    q_fixed = np.array([0.5, 0.5, 0.5, -0.5])
+    q_fixed_inv = tq.qconjugate(q_fixed)
+    q_in = tq.qmult(q_fixed_inv, q_out)
+    return q_in
 
+import numpy as np
+import transforms3d.quaternions as tq
+
+def sapien_to_json1(pos_sapien, quat_sapien):
+    # 1️⃣ 定义正向变换 q_rx90（绕 X 轴旋转 90°）
+    q_rx90 = tq.axangle2quat([1, 0, 0], np.deg2rad(90))
+    q_rx90_inv = tq.qconjugate(q_rx90)
+
+    # 2️⃣ 逆变换位置和旋转
+    pos_json = tq.quat2mat(q_rx90_inv) @ pos_sapien
+    quat_json = tq.qmult(q_rx90_inv, quat_sapien)
+
+    return pos_json, quat_json
 
 
 def main():
-    # pos = [-1.779462, 4.550405, 0.975565]
-    # quat = [0.0, -0.707, 0.707, -0.0]
-    # pos_json, quat_json = sapien_to_json(pos, quat)
-    # print("pos_json =", pos_json)
-    # print("quat_json =", quat_json)
-    print(quat_inverse([0, -0.707, 0.707, 0]))
+    pos_sapien = np.array([2.870, -2.000, 4.254])
+    quat_sapien = np.array([0.707, 0, 0, 0.707])
+    pos_json, quat_json = sapien_to_json1(pos_sapien, quat_sapien)
+    print("pos_json:", pos_json)
+    print("quat_json:", quat_json)
+
 
 if __name__ == "__main__":
     main()
