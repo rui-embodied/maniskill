@@ -78,7 +78,7 @@ class StairEnv(BaseEnv):
     def _load_agent(self, options: dict):
         init_poses = []
             # print(agent_cfg)
-        init_poses.append(sapien.Pose(p=[0 ,0 ,1]))
+        init_poses.append(sapien.Pose(p=[120 ,120 ,1]))
         super()._load_agent(options, init_poses)
 
     def _load_scene(self, options: dict):
@@ -161,6 +161,21 @@ class StairEnv(BaseEnv):
         self.scene.sensors = self._sensors
         self.scene.human_render_cameras = self._human_render_cameras
 
+    @property 
+    def _default_sensor_configs(self):
+        all_camera_configs =[] 
+        config = CameraConfig( 
+            uid="m_cam", 
+            width=1440, 
+            height=1920, 
+            fov=2.4, 
+            near=0.01, 
+            far=10, 
+            pose=sapien.Pose(p=[2,0,0.5],q=[1,0,0,0]),
+            shader_pack="rt-med"
+        ) 
+        all_camera_configs.append(config) 
+        return all_camera_configs
 
     def compute_dense_reward(self, obs: Any, action: torch.Tensor, info: Dict):
         pass
