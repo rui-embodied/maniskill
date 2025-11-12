@@ -11,7 +11,7 @@ from sim import ASSET_DIR
 @register_agent()
 class Galaxea(BaseAgent):
     uid = "galaxea"
-    urdf_path = f"{ASSET_DIR}/R1_Lite/urdf/mmp_revB_invconfig_upright_a1x.urdf"
+    urdf_path = f"{ASSET_DIR}/R1_Lite/urdf/mmp_revB_invconfig_upright_a1x_scaled_fixed_1p3x.urdf"
     fix_root_link = True
     disable_self_collisions = True
 

@@ -117,7 +117,8 @@ class ReplicaCADSceneBuilder(SceneBuilder):
                 build_config_json["stage_instance"]["template_name"]
             )
             bg_path = str(
-                "sim/assets/scene119.glb"
+                # "sim/assets/scene119.glb"
+                "sim/assets/119_fixed1.glb"
                 # "/home/sutai/Desktop/assets/169.glb"
             )
             builder = self.scene.create_actor_builder()
